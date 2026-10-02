@@ -1,0 +1,552 @@
+[
+{
+"question": "What is the definition of allergy?",
+"options": [
+"A normal immune response to a pathogen",
+"An altered reactivity to tissue caused by exposure to an innocuous agent",
+"A genetic disorder affecting antibody production",
+"An autoimmune disease targeting self-antigens"
+],
+"correct": 1,
+"explanation": "Allergy is defined as an altered reactivity to the tissue of certain individuals, caused by exposure to an agent (allergen) that is innocuous to other persons (Page 3)."
+},
+{
+"question": "Which of the following is NOT a route of administration for allergens?",
+"options": [
+"Inhalation",
+"Ingestion",
+"Injection",
+"Excretion"
+],
+"correct": 3,
+"explanation": "The routes of administration for allergens are Inhalation, Ingestion, Injection, and Contact with skin (Page 4)."
+},
+{
+"question": "Which type of hypersensitivity reaction is classified as a delayed allergic reaction?",
+"options": [
+"Type I",
+"Type II",
+"Type III",
+"Type IV"
+],
+"correct": 3,
+"explanation": "Immediate allergic reactions include types I, II, and III, while delayed allergic reaction includes type IV (Page 4)."
+},
+{
+"question": "Which of the following drugs shares a cross-allergy with penicillin?",
+"options": [
+"Erythromycin",
+"Cephalosporins",
+"Acetaminophen",
+"Tetracycline"
+],
+"correct": 1,
+"explanation": "Cross-allergy occurs when a patient is allergic to different drugs that share the same basic structure, e.g., penicillin and cephalosporins (Page 5)."
+},
+{
+"question": "Which route of drug administration is considered the safest to minimize the risk of drug allergy?",
+"options": [
+"Intravenous (I.V.)",
+"Intramuscular (I.M.)",
+"Oral",
+"Subcutaneous (S.C.)"
+],
+"correct": 2,
+"explanation": "The oral route is the safest and the I.V. route is the most dangerous, so avoid I.V. injection as far as possible (Page 6)."
+},
+{
+"question": "How long should a patient liable to develop allergic reactions be observed after parenteral administration?",
+"options": [
+"5 minutes",
+"15 minutes",
+"30 minutes",
+"60 minutes"
+],
+"correct": 2,
+"explanation": "Patients liable to develop allergic reactions should be observed for 30 minutes after parenteral administration (serious reaction occurs within 30 minutes) (Page 6)."
+},
+{
+"question": "Which drug is used as an alternative to aspirin for patients with aspirin allergy?",
+"options": [
+"Ibuprofen",
+"Acetaminophen",
+"Naproxen",
+"Erythromycin"
+],
+"correct": 1,
+"explanation": "Aspirin allergy is prevented by utilization of acetaminophen (Page 7)."
+},
+{
+"question": "What is the first line of treatment in an emergency situation like anaphylactic shock?",
+"options": [
+"Antihistamines",
+"Corticosteroids",
+"Adrenaline",
+"Oxygen"
+],
+"correct": 2,
+"explanation": "Adrenaline is the first line of treatment in emergency situations such as anaphylactic shock, bronchial asthma, and angioedema (Page 8)."
+},
+{
+"question": "What is the maximum dose of adrenaline that can be administered in anaphylactic shock?",
+"options": [
+"0.5 ml",
+"1.0 ml",
+"1.5 ml",
+"2.0 ml"
+],
+"correct": 2,
+"explanation": "Adrenaline is re-administered after 5 minutes if there is no improvement with a maximum dose of 1.5 ml (Page 9)."
+},
+{
+"question": "Why should adrenaline NEVER be given intravenously (I.V.)?",
+"options": [
+"To avoid ventricular fibrillation",
+"To prevent severe hypertension",
+"To avoid tissue necrosis",
+"To prevent an allergic reaction"
+],
+"correct": 0,
+"explanation": "Adrenaline should never be given I.V. to avoid ventricular fibrillation (Page 9)."
+},
+{
+"question": "Which protein is produced by the nucleus upon stimulation by the corticosteroid-receptor complex?",
+"options": [
+"Lipocortin",
+"Phospholipase",
+"Interleukin-2",
+"Histamine"
+],
+"correct": 0,
+"explanation": "The corticosteroid-receptor complex enters the nucleus which is stimulated to produce mRNA to produce Lipocortin (Page 10)."
+},
+{
+"question": "What is the action of Lipocortin in the context of corticosteroid mechanism?",
+"options": [
+"Activates phospholipase enzyme",
+"Stimulates prostaglandin release",
+"Inhibits phospholipase enzyme and stabilizes biologic membranes",
+"Increases capillary permeability"
+],
+"correct": 2,
+"explanation": "Lipocortin possesses anti-inflammatory action by inhibiting phospholipase enzyme and stabilizing biologic membranes and capillaries (Page 11)."
+},
+{
+"question": "What is the effect of corticosteroids on neutrophil count?",
+"options": [
+"Neutropenia",
+"Neutrophilia",
+"No effect",
+"Decreased intravascular half-life"
+],
+"correct": 1,
+"explanation": "Corticosteroids cause Neutrophilia (increased neutrophils) by increasing the intravascular half-life and mobilization from bone marrow (Page 13)."
+},
+{
+"question": "Why are antihistamines of no value in the emergency treatment of anaphylaxis?",
+"options": [
+"They are too potent",
+"They are slowly acting drugs and antagonize only one mediator",
+"They cause severe side effects",
+"They increase blood pressure rapidly"
+],
+"correct": 1,
+"explanation": "Antihistamines are of no value in emergency treatment because they are slowly acting drugs and antagonize one mediator only (histamine) (Page 14)."
+},
+{
+"question": "Which type of hypersensitivity reaction involves free antigens binding to IgE on mast cells and basophils?",
+"options": [
+"Type I",
+"Type II",
+"Type III",
+"Type IV"
+],
+"correct": 0,
+"explanation": "Type I (Anaphylactic) reaction involves free antigens binding to IgE on mast cells and basophils, causing release of histamine (Page 15)."
+},
+{
+"question": "Which antibodies are primarily involved in Type II (Cytotoxic) hypersensitivity reactions?",
+"options": [
+"IgE",
+"IgG and IgM",
+"IgA",
+"IgD"
+],
+"correct": 1,
+"explanation": "Type II reactions involve IgG or IgM activating Complement and binding to antigens on cell membranes leading to cell damage or phagocytosis (Page 15)."
+},
+{
+"question": "What is the mechanism of Type III (Immune complex disease) hypersensitivity?",
+"options": [
+"Antigen activates sensitized T cells",
+"Free antigens bind to IgE",
+"Persistence of Ag/Ab complexes activates complement causing inflammation",
+"IgG binds to cell membranes causing lysis"
+],
+"correct": 2,
+"explanation": "Type III reaction occurs due to the persistence of Ag/Ab complexes which may activate the complement, leading to inflammation and tissue damage (Page 15)."
+},
+{
+"question": "Which cells are primarily involved in Type IV (Delayed) hypersensitivity reactions?",
+"options": [
+"B cells and plasma cells",
+"T cells (TH1 and Tc) and macrophages",
+"Mast cells and basophils",
+"Neutrophils and eosinophils"
+],
+"correct": 1,
+"explanation": "Type IV reaction involves antigen activating sensitized T cells (TH1 and T cytotoxic) to become cytotoxic and release lymphokines that stimulate other leukocytes (Page 15)."
+},
+{
+"question": "Which of the following is an example of a Type II hypersensitivity reaction?",
+"options": [
+"Serum sickness",
+"Contact dermatitis",
+"Autoimmune hemolytic anemia",
+"Anaphylactic shock"
+],
+"correct": 2,
+"explanation": "Examples of Type II reactions include Autoimmune hemolytic anemia, Thrombocytopenia, and Erythroblastosis fetalis (Page 17)."
+},
+{
+"question": "Which of the following is an example of a Type III hypersensitivity reaction?",
+"options": [
+"Serum sickness",
+"Bronchial asthma",
+"Contact dermatitis",
+"Urticaria"
+],
+"correct": 0,
+"explanation": "Examples of Type III reactions include Serum sickness, Arthus reaction, and L.E (Page 17)."
+},
+{
+"question": "In Type I allergic reaction, which cells produce IgE upon first contact with the allergen?",
+"options": [
+"T-lymphocytes",
+"Plasma cells",
+"Macrophages",
+"Neutrophils"
+],
+"correct": 1,
+"explanation": "First contact with allergen results in the formation of IgE by plasma cells via interaction between macrophages, TH2 and B cells (Page 18)."
+},
+{
+"question": "Which preformed mediator in mast cell granules is an anticoagulant and activates C1?",
+"options": [
+"Histamine",
+"Heparin",
+"Tryptase",
+"Platelet Activating Factor"
+],
+"correct": 1,
+"explanation": "Heparin is a preformed mediator that acts as an anticoagulant and activates C1 (Page 19)."
+},
+{
+"question": "Which enzyme in mast cell granules increases vascular permeability and activates C3?",
+"options": [
+"Lipoxygenase",
+"Cyclooxygenase",
+"Tryptase",
+"Phospholipase"
+],
+"correct": 2,
+"explanation": "Protease enzyme mainly tryptase increases vascular permeability and activates C3 (Page 20)."
+},
+{
+"question": "What is the main mediator in bronchial asthma?",
+"options": [
+"Histamine",
+"Leukotrienes",
+"Prostaglandins",
+"Thromboxane"
+],
+"correct": 1,
+"explanation": "Allergic reaction results in the release of leukotrienes (SRS-A) which is the main mediator in bronchial asthma (Page 45)."
+},
+{
+"question": "Which test involves the injection of serum containing IgE into the skin to produce a wheel and flare reaction?",
+"options": [
+"Patch test",
+"Prausnitz-Kustner test",
+"Epimucous test",
+"Arthus reaction"
+],
+"correct": 1,
+"explanation": "Subsequent injection of the specific antigen will produce a wheel and flare reaction (Prausnitz-Kustner test) (Page 24)."
+},
+{
+"question": "What is the immediate management step for a patient experiencing anaphylactic shock?",
+"options": [
+"Administer antihistamine",
+"Lay the patient flat with legs raised",
+"Give hydrocortisone I.V.",
+"Call an ambulance"
+],
+"correct": 1,
+"explanation": "The first step in management is to lay the patient flat with legs raised to improve venous return and increase blood flow to the brain (Page 29)."
+},
+{
+"question": "During the acute phase of anaphylactic shock, which of the following is NOT administered?",
+"options": [
+"Adrenaline",
+"Oxygen",
+"Hydrocortisone",
+"Positioning the patient"
+],
+"correct": 2,
+"explanation": "Hydrocortisone and antihistamine are not administered during the acute phase of the reaction; their main function is to prevent relapse (Page 31, 32)."
+},
+{
+"question": "Hereditary angioedema is a complement-mediated disorder inherited as:",
+"options": [
+"Autosomal recessive trait",
+"X-linked dominant trait",
+"Autosomal dominant trait",
+"Mitochondrial inheritance"
+],
+"correct": 2,
+"explanation": "Hereditary angioedema is a complement-mediated angioedema which is an autosomal dominant trait (Page 35)."
+},
+{
+"question": "What is the underlying defect in Type I Hereditary Angioedema (HAE)?",
+"options": [
+"Qualitative deficiency of C1 esterase inhibitor",
+"Quantitative deficiency of C1 esterase inhibitor",
+"Excess production of C1 esterase inhibitor",
+"Deficiency of C3"
+],
+"correct": 1,
+"explanation": "Type one HAE is characterized by low level of C1 esterase inhibitor protein (quantitative deficiency) and represents 85% of cases (Page 35)."
+},
+{
+"question": "Which synthetic androgen is used for prophylactic treatment of Hereditary Angioedema?",
+"options": [
+"Stanozolol",
+"Tranexamic acid",
+"Aminocaproic acid",
+"Prednisone"
+],
+"correct": 0,
+"explanation": "The synthetic androgen 'stanozolol' (2.5 - 10 mg daily) is used for prophylactic treatment, but should be avoided in liver disease (Page 39)."
+},
+{
+"question": "Which of the following is a dental implication for a patient with bronchial asthma?",
+"options": [
+"Avoid aspirin as it increases leukotrienes release",
+"Use barbiturates for sedation",
+"Use narcotics for pain relief",
+"Encourage the use of systemic steroids without supplementation"
+],
+"correct": 0,
+"explanation": "Dental implications for bronchial asthma include avoiding aspirin (increases leukotrienes release), barbiturates, and narcotics. Steroid supplementation may be needed if on systemic steroids (Page 48)."
+},
+{
+"question": "Oral candidosis involving the soft palate and oropharynx is common in asthmatic patients due to:",
+"options": [
+"Use of bronchodilators",
+"Use of steroid inhaler",
+"Use of antihistamines",
+"Frequent antibiotics"
+],
+"correct": 1,
+"explanation": "Oral candidosis involving the soft palate and oropharynx is common due to the use of steroid inhaler (Page 48)."
+},
+{
+"question": "Which type of hypersensitivity reaction is Serum sickness?",
+"options": [
+"Type I",
+"Type II",
+"Type III",
+"Type IV"
+],
+"correct": 2,
+"explanation": "Serum sickness is a self-limiting systemic allergic disease caused by immune-complex complement dependent reaction (Type III) (Page 55)."
+},
+{
+"question": "When do symptoms of Serum sickness typically appear after injection of the foreign serum?",
+"options": [
+"Within 30 minutes",
+"After 2-4 hours",
+"7 to 10 days",
+"After 1 month"
+],
+"correct": 2,
+"explanation": "7 to 10 days after the injection, the produced antibodies will react with the residue of the circulating antigen forming antigen-antibody complexes (Page 55)."
+},
+{
+"question": "What is the common site for a fixed drug eruption in the oral cavity?",
+"options": [
+"Gingiva",
+"Tongue",
+"Palate",
+"Buccal mucosa"
+],
+"correct": 1,
+"explanation": "The tongue is a common site for fixed drug eruption (Page 60)."
+},
+{
+"question": "Stomatitis medicamentosa (Allergic stomatitis) is most commonly mediated by which type of hypersensitivity?",
+"options": [
+"Type I",
+"Type II",
+"Type III",
+"Type IV"
+],
+"correct": 2,
+"explanation": "Allergic stomatitis may be attributed to type I (less common) or type III (more common) hypersensitivity reaction (Page 58)."
+},
+{
+"question": "Which type of hypersensitivity reaction is Contact allergy (Stomatitis venenata)?",
+"options": [
+"Type I",
+"Type II",
+"Type III",
+"Type IV"
+],
+"correct": 3,
+"explanation": "Contact allergy is a delayed allergic reaction (Type IV) mediated by TH1 and Tc cells (Page 61)."
+},
+{
+"question": "What is the characteristic of the patch test in contact allergy?",
+"options": [
+"Negative",
+"Weak positive",
+"Positive",
+"Immediate positive"
+],
+"correct": 2,
+"explanation": "Diagnosis of contact allergy includes a positive patch test (Page 68)."
+},
+{
+"question": "Why is the oral mucosa less liable to sensitization compared to skin in contact allergy?",
+"options": [
+"It has a thicker keratin layer",
+"It has a brief contact, saliva dilutes allergens, and high vascularity",
+"It lacks Langerhans cells",
+"It has a lower temperature"
+],
+"correct": 1,
+"explanation": "The oral mucosa is less liable to sensitization because of brief contact, saliva (dilutes, digests, washes away allergen), and high vascularity of submucosa leading to rapid adsorption (Page 63)."
+},
+{
+"question": "Which dental material is a common cause of contact allergy (Stomatitis venenata)?",
+"options": [
+"Amalgam filling",
+"Acrylic resin (methyl methacrylate)",
+"Gold crowns",
+"Zinc oxide eugenol"
+],
+"correct": 1,
+"explanation": "Plastic filling material (acrylic resin) and denture base material due to liquid monomer are common causes of contact allergy induced by dentists (Page 64)."
+},
+{
+"question": "How can you differentiate allergy to denture base material from denture sore mouth (chronic atrophic candidosis)?",
+"options": [
+"Allergy shows erythema confined to the upper denture bearing area only",
+"Allergy has a negative patch test",
+"Denture sore mouth involves the inner aspect of the lip and cheek",
+"Allergy is treated with antifungal drugs"
+],
+"correct": 2,
+"explanation": "In allergy to denture base material, erythema involves the denture bearing and denture contacting areas (inner aspect of lip, cheek & tongue), whereas in DSM it is confined to the upper denture bearing area only (Page 69)."
+},
+{
+"question": "Which of the following is TRUE regarding the comparison between Allergic stomatitis and Contact stomatitis?",
+"options": [
+"Allergic stomatitis is Type IV, Contact stomatitis is Type III",
+"Allergic stomatitis has a systemic route, Contact stomatitis has a topical route",
+"Contact stomatitis is more severe than Allergic stomatitis",
+"Contact stomatitis has an early onset within few hours"
+],
+"correct": 1,
+"explanation": "Allergic stomatitis has a systemic route of administration, while Contact stomatitis has a topical route. Allergic stomatitis is Type III (common), Contact stomatitis is Type IV. Contact stomatitis appears later (48 hrs) and is less severe (Page 70)."
+},
+{
+"question": "What is the mechanism of action of antihistamines?",
+"options": [
+"They block the release of leukotrienes",
+"They antagonize histamine receptors",
+"They inhibit phospholipase enzyme",
+"They act as bronchodilators"
+],
+"correct": 1,
+"explanation": "Antihistamines antagonize one mediator only (histamine) and restore vasomotor tone (Page 14)."
+},
+{
+"question": "Which mediator is responsible for the pain and bronchial mucosal edema in Type I hypersensitivity?",
+"options": [
+"Histamine",
+"Prostaglandins",
+"Leukotrienes",
+"Heparin"
+],
+"correct": 1,
+"explanation": "Prostaglandins cause vasodilation, increased vascular permeability, pain, and bronchial mucosal edema (Page 23)."
+},
+{
+"question": "Which type of hypersensitivity reaction is responsible for the rejection of a tissue graft?",
+"options": [
+"Type I",
+"Type II",
+"Type III",
+"Type IV"
+],
+"correct": 3,
+"explanation": "Type IV (Cell mediated) reactions include contact dermatitis, graft rejection, and pulmonary T.B (Page 17)."
+},
+{
+"question": "Which of the following is a preformed mediator in mast cells that causes smooth muscle contraction?",
+"options": [
+"Histamine",
+"Prostaglandin",
+"Leukotriene",
+"Platelet Activating Factor"
+],
+"correct": 0,
+"explanation": "Histamine causes increased capillary permeability, smooth muscle contraction (bronchi), and stimulates gastric acid, bronchial & nasal secretion (Page 19)."
+},
+{
+"question": "What is the action of Platelet Activating Factor (PAF)?",
+"options": [
+"Causes vasoconstriction",
+"Inhibits platelet aggregation",
+"Activates and aggregates platelets, causes vasodilatation and increases vascular permeability",
+"Decreases vascular permeability"
+],
+"correct": 2,
+"explanation": "PAF causes activation & aggregation of platelets, vasodilatation of blood vessels, increased vascular permeability, and activation & degranulation of neutrophils and eosinophils (Page 20)."
+},
+{
+"question": "In the management of anaphylactic shock, what is the recommended dose of IM epinephrine?",
+"options": [
+"0.1 mg of 1:1000 solution",
+"0.5 mg of 1:1000 solution",
+"1.0 mg of 1:1000 solution",
+"0.5 mg of 1:10000 solution"
+],
+"correct": 1,
+"explanation": "IM epinephrine is administered as 0.5mg of 1:1000 of epinephrine solution (Page 30)."
+},
+{
+"question": "Which of the following is a clinical feature of angioedema?",
+"options": [
+"Rapidly developing edema appearing in less than half an hour",
+"Swelling is painful and hot",
+"Confined only to the lower extremities",
+"Usually accompanied by fever"
+],
+"correct": 0,
+"explanation": "Angioedema is characterized by rapidly developing edema appearing in less than half an hour. The swelling appears smooth, diffuse, painless with no change in temperature (Page 33, 34)."
+},
+{
+"question": "Which drug is used to inhibit the kinin system in Hereditary Angioedema preoperatively?",
+"options": [
+"Stanozolol",
+"Tranexamic acid",
+"Adrenaline",
+"Prednisolone"
+],
+"correct": 1,
+"explanation": "The plasmin inhibitors: aminocaporic acid and its analogue tranexamic acid (can inhibit kinin system) are useful preoperatively (Page 39)."
+}
+]

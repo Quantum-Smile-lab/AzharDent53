@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinical Guide: Local Anesthesia Complications</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Cairo -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f8fafc;
+        }
+        .en-term {
+            direction: ltr;
+            display: inline-block;
+            font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+            font-weight: 700;
+            color: #1e3a8a;
+            background-color: #eff6ff;
+            padding: 2px 8px;
+            border-radius: 4px;
+            border: 1px solid #bfdbfe;
+        }
+        .en-inline {
+            direction: ltr;
+            display: inline-block;
+            font-weight: 600;
+        }
+        .badge-danger {
+            background-color: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #fca5a5;
+        }
+        .badge-warning {
+            background-color: #fef3c7;
+            color: #92400e;
+            border: 1px solid #fde68a;
+        }
+        .badge-success {
+            background-color: #dcfce7;
+            color: #166534;
+            border: 1px solid #86efac;
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased pb-12">
+
+    <!-- Header / Navbar -->
+    <header class="bg-indigo-900 text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center space-x-3 space-x-reverse">
+                <div class="bg-indigo-600 p-3 rounded-xl shadow-inner">
+                    <i class="fa-solid font-bold fa-user-md text-2xl text-white"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl sm:text-2xl font-extrabold tracking-wide">دليل عيادة أسنان: LA Complications</h1>
+                    <p class="text-xs text-indigo-200">المرجع السريع للأطباء المتدربين والامتياز قبل دخول العيادة</p>
+                </div>
+            </div>
+
+            <!-- Search & Filters -->
+            <div class="w-full md:w-auto flex flex-col sm:flex-row gap-2">
+                <div class="relative w-full sm:w-64">
+                    <input type="text" id="searchInput" onkeyup="filterCards()" placeholder="ابحث عن عرض أو مشكلة..." 
+                        class="w-full pr-10 pl-4 py-2 rounded-lg text-slate-900 bg-indigo-50 border border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-400 text-sm">
+                    <i class="fa-solid fa-magnifying-glass absolute right-3 top-3 text-indigo-400"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
+
+        <!-- Intro Banner -->
+        <div class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white rounded-2xl p-6 shadow-md mb-8">
+            <h2 class="text-lg font-bold mb-2 flex items-center gap-2">
+                <i class="fa-solid fa-stethoscope text-yellow-300"></i>
+                ازيك يا دكتور! جاهز للدخول العيادة؟
+            </h2>
+            <p class="text-sm leading-relaxed text-indigo-100">
+                الملف ده متصمم كمرجع سريع لك أثناء الشغل. تقسم مضاعفات التخدير النصفي لنوعين أساسيين: 
+                <span class="font-bold underline text-white">Local Complications</span> (بسبب ميكانيكية الحقن أو تأثير المخدر الموضعي على النسيج) و 
+                <span class="font-bold underline text-white">Systemic Complications</span> (نتيجة الجرعة الزائدة، أو امتصاص الدواء للجسم، أو رد فعل تحسسي).
+                استخدم الفلاتر بالأسفل للوصول المباشر.
+            </p>
+        </div>
+
+        <!-- Category Tabs -->
+        <div class="flex flex-wrap gap-3 mb-6 border-b border-slate-200 pb-4">
+            <button onclick="filterCategory('all')" id="btn-all" class="tab-btn active bg-indigo-600 text-white px-5 py-2 rounded-xl text-sm font-bold shadow hover:bg-indigo-700 transition">
+                الكل (All)
+            </button>
+            <button onclick="filterCategory('local')" id="btn-local" class="tab-btn bg-white text-slate-700 border border-slate-300 px-5 py-2 rounded-xl text-sm font-bold shadow-sm hover:bg-slate-50 transition">
+                <i class="fa-solid fa-syringe text-indigo-500 ml-1"></i> Local Complications
+            </button>
+            <button onclick="filterCategory('systemic')" id="btn-systemic" class="tab-btn bg-white text-slate-700 border border-slate-300 px-5 py-2 rounded-xl text-sm font-bold shadow-sm hover:bg-slate-50 transition">
+                <i class="fa-solid fa-heart-pulse text-red-500 ml-1"></i> Systemic Complications
+            </button>
+            <button onclick="filterCategory('emergency')" id="btn-emergency" class="tab-btn bg-white text-slate-700 border border-slate-300 px-5 py-2 rounded-xl text-sm font-bold shadow-sm hover:bg-slate-50 transition">
+                <i class="fa-solid fa-triangle-exclamation text-amber-500 ml-1"></i> Emergency Protocol
+            </button>
+        </div>
+
+        <!-- Cards Grid -->
+        <div id="cardsGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+            <!-- LOCAL COMPLICATIONS -->
+
+            <!-- 1. Pain on Injection -->
+            <div class="card local bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden">
+                <div class="bg-slate-50 border-b border-slate-100 p-4 flex justify-between items-center">
+                    <h3 class="font-bold text-lg text-slate-800 flex items-center gap-2">
+                        <span class="bg-indigo-100 text-indigo-700 w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold">1</span>
+                        Pain on Injection (الألم أثناء الحقن)
+                    </h3>
+                    <span class="en-term">Local</span>
+                </div>
+                <div class="p-5 space-y-4 text-sm">
+                    <div>
+                        <strong class="text-indigo-900 block mb-1"><i class="fa-solid fa-circle-question text-indigo-500 ml-1"></i> سيناريو العيادة والأسباب:</strong>
+                        <p class="text-slate-600 mb-2">المريض بيتوجع جامد وهو بيتخدر. الأسباب الشائعة:</p>
+                        <ul class="list-disc list-inside text-slate-700 space-y-1 pr-2">
+                            <li><span class="en-inline">Palatal injection</span> دايماً بتوجع بطبيعتها لشدة التصاق النسيج بالعظم.</li>
+                            <li>استخدام إبرة تالفة أو ملموسة أكتر من مرة (<span class="en-inline">Dull needle</span>).</li>
+                            <li>حقن المحلول بسرعة شديدة (<span class="en-inline">Rapid deposition</span>).</li>
+                            <li>وجود رايش أو سنان في حرف الإبرة (<span class="en-inline">Fishhook barb</span>) لما خبطت في العظم وانت بتسحبها بتشرط النسيج.</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-emerald-50 border-r-4 border-emerald-500 p-3 rounded">
+                        <strong class="text-emerald-900 block mb-1"><i class="fa-solid fa-shield-halved text-emerald-600 ml-1"></i> ازاي تمنع المشكلة دي (Prevention):</strong>
+                        <ul class="list-disc list-inside text-emerald-800 space-y-1">
+                            <li>اهتم بالـ Technique المظبوط نفسياً وجسدياً.</li>
+                            <li>غير الإبرة لو حستها اتلمت وما تحقنش بيها أكتر من مرة.</li>
+                            <li>حط <span class="en-inline">Topical Anesthetic</span> لمدة دقيقتين قبل الشك.</li>
+                            <li>احقن ببطء شديد (<span class="en-inline">Slow injection</span>).</li>
+                            <li>تأكد إن الكاربولة مش ساقعة طالعة من التلاجة (حرارة الغرفة هي الأنسب).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Burning on Injection -->
+            <div class="card local bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden">
+                <div class="bg-slate-50 border-b border-slate-100 p-4 flex justify-between items-center">
+                    <h3 class="font-bold text-lg text-slate-800 flex items-center gap-2">
+                        <span class="bg-indigo-100 text-indigo-700 w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold">2</span>
+                        Burning on Injection (شعور بالحرقان أثناء الحقن)
+                    </h3>
+                    <span class="en-term">Local</span>
+                </div>
+                <div class="p-5 space-y-4 text-sm">
+                    <div>
+                        <strong class="text-indigo-900 block mb-1"><i class="fa-solid fa-fire text-amber-500 ml-1"></i> الأسباب العيادية:</strong>
+                        <ul class="list-disc list-inside text-slate-700 space-y-1 pr-2">
+                            <li>حموضة المحلول (<span class="en-inline">pH of solution</span>): المحلول العادي قلاوي مؤقتاً، لكن لو فيه <span class="en-inline">Vasoconstrictor</span> بيكون حامضي أكتر فيسبب حرقان خفيف.</li>
+                            <li>الحقن السريع جداً خصوصاً في سقف الحلق (<span class="en-inline">Palatal tissues</span>).</li>
+                            <li>تلوث الكاربولة بمادة مطهرة (<span class="en-inline">Sterilizing solution/Alcohol</span>) تسربت جواها.</li>
+                            <li>حرارة المحلول سخنة أو باردة زيادة.</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-amber-50 border-r-4 border-amber-500 p-3 rounded">
+                        <strong class="text-amber-900 block mb-1"><i class="fa-solid fa-triangle-exclamation text-amber-600 ml-1"></i> الملاحظة والتصرف:</strong>
+                        <p class="text-amber-800">الحرقان وقتي وبيختفي لما البنج يشتغل، لكنه مؤشر لـ <span class="en-inline">Tissue irritation</span> وممكن يسبب لاحقاً <span class="en-inline">Post-anesthetic Trismus, Edema, or Paresthesia</span>.</p>
+                        <p class="font-bold text-slate-800 mt-2">القاعدة الذهبية للحقن:</p>
+                        <p class="text-slate-700">معدل الحقن المثالي هو <span class="en-term">1 ml / min</span> وما تزيدش إطلاقاً عن <span class="en-term">1.8 ml in 1 min</span>.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Persistent Anesthesia / Paresthesia -->
+            <div class="card local bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden">
+                <div class="bg-slate-50 border-b border-slate-100 p-4 flex justify-between items-center">
+                    <h3 class="font-bold text-lg text-slate-800 flex items-center gap-2">
+                        <span class="bg-indigo-100 text-indigo-700 w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold">3</span>
+                        Paresthesia (استمرار التنميل بعد انتهاء البنج)
+                    </h3>
+                    <span class="en-term">Local</span>
+                </div>
+                <div class="p-5 space-y-4 text-sm">
+                    <div>
+                        <strong class="text-indigo-900 block mb-1"><i class="fa-solid fa-user-gear text-indigo-500 ml-1"></i> الأسباب:</strong>
+                        <p class="text-slate-600 mb-1">المريض يرجع العيادة بعد أيام ويقولك: "يا دكتور شفتي أو لساني لسه منملين!".</p>
+                        <ul class="list-disc list-inside text-slate-700 space-y-1 pr-2">
+                            <li>اصطدام الإبرة أو جرح العصب نفسه (<span class="en-inline">Trauma to nerve/sheath</span>).</li>
+                            <li>حقن بنج متلوث بكحول أو مطهر عمل <span class="en-inline">Edema</span> وضغط على العصب.</li>
+                            <li>نزيف حول العصب (<span class="en-inline">Hemorrhage into neural sheath</span>).</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-blue-50 border-r-4 border-blue-500 p-4 rounded-lg space-y-2">
+                        <strong class="text-blue-900 block font-bold text-base"><i class="fa-solid fa-clipboard-check text-blue-600 ml-1"></i> بروتوكول التعامل مع المريض (Management Protocol):</strong>
+                        <ol class="list-decimal list-inside text-slate-800 space-y-2">
+                            <li><strong>Reassure the patient:</strong> طمّن المريض جداً واشرح له إنها مضاعفة واردة وبتحصل، ومعظم الحالات بتخف تلقائياً خلال <span class="font-bold text-blue-700">8 أسابيع</span>.</li>
+                            <li><strong>Record in chart:</strong> سجل التفاصيل بالكامل في كارت المريض.</li>
+                            <li><strong>Examine & Map:</strong> افحص درجة التنميل وحدد مكانها وفهم المريض إنها ممكن تطول لـ 2 شهر لـ 1 سنة.</li>
+                            <li><strong>Follow-up:</strong> حدد ميعاد مراجعة كل شهرين لفحص الإحساس.</li>
+                            <li><strong>Referral:</strong> لو استمر النقص الحسي بعد مرور سنة كاملة، يتم تحويله فوراً لـ <span class="en-inline">Oral Surgeon</span> أو <span class="en-inline">Neurologist</span>.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Trismus -->
+            <div class="card local bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden">
+                <div class="bg-slate-50 border-b border-slate-100 p-4 flex justify-between items-center">
+                    <h3 class="font-bold text-lg text-slate-800 flex items-center gap-2">
+                        <span class="bg-indigo-100 text-indigo-700 w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold">4</span>
+                        Trismus (صعوبة وتشنج فتح الفم)
+                    </h3>
+                    <span class="en-term">Local</span>
+                </div>
+                <div class="p-5 space-y-4 text-sm">
+                    <div>
+                        <strong class="text-indigo-900 block mb-1"><i class="fa-solid fa-stethoscope text-indigo-500 ml-1"></i> السيناريو والأسباب:</strong>
+                        <p class="text-slate-600 mb-1">المريض يكلمك تاني يوم إديلو فيه <span class="en-inline">PSA Block</span> أو <span class="en-inline">IAB Block</span> ويقولك: "مش عارف أفتح بقي خالص وفي وجع شديد".</p>
+                        <ul class="list-disc list-inside text-slate-700 space-y-1 pr-2">
+                            <li>السبب الأشهر: <span class="en-inline">Trauma to muscles or blood vessels</span> في الـ <span class="en-inline">Infratemporal space</span>.</li>
+                            <li>محلول بنج متلوث بكحول عمل تهيج للمضلات (<span class="en-inline">Muscle irritation</span>).</li>
+                            <li>وجود تجمع دموي (<span class="en-inline">Hemorrhage</span>).</li>
+                            <li>عدوى خفيفة (<span class="en-inline">Low-grade infection</span>) أو تكرار الشك بالإبرة كذا مرة (<span class="en-inline">Multiple penetrations</span>).</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-amber-50 border-r-4 border-amber-500 p-3 rounded space-y-2">
+                        <strong class="text-amber-900 block font-bold"><i class="fa-solid fa-list-check text-amber-600 ml-1"></i> خطوات العلاج والبروتوكول (Management):</strong>
+                        <ul class="list-disc list-inside text-slate-800 space-y-1">
+                            <li><strong>Heat Therapy:</strong> فوط دافية رطبة على المكان لمدة 20 دقيقة كل ساعة.</li>
+                            <li><strong>Analgesics:</strong> يبدأ بـ <span class="en-inline">Aspirin</span>، ولو الألم شديد يوصف <span class="en-inline">Codeine 30-60 mg</span> كل 3 ساعات.</li>
+                            <li><strong>Muscle Relaxants:</strong> كبسولات <span class="en-inline">Diazepam 10 mg</span> كل 12 ساعة.</li>
+                            <li><strong>Physiotherapy:</strong> تمارين فتح وغلق الفم والحركات الجانبية + مضغ لبان خالي من السكر لمدة 5 دقائق كل 3-4 ساعات.</li>
+                            <li><strong>Antibiotics:</strong> كورس مضاد حيوي 7 أيام كاملة لو الألم والصعوبة استمرت أكتر من 48 ساعة (شكاً في وجود العدوى).</li>
+                            <li><strong>Referral:</strong> تحويل لـ <span class="en-inline">Oral Surgeon</span> لو مفيش تحسن خلال 2-3 أيام بدون مضاد، أو 5-7 أيام بالمضاد، أو لو فتحة الفم ضيقة جداً بشكل حاد.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. Hematoma -->
+            <div class="card local bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden">
+                <div class="bg-slate-50 border-b border-slate-100 p-4 flex justify-between items-center">
+                    <h3 class="font-bold text-lg text-slate-800 flex items-center gap-2">
+                        <span class="bg-indigo-100 text-indigo-700 w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold">5</span>
+                        Hematoma (التجمع الدموي/الورم الدموي)
+                    </h3>
+                    <span class="en-term">Local</span>
+                </div>
+                <div class="p-5 space-y-4 text-sm">
+                    <div>
+                        <strong class="text-indigo-900 block mb-1"><i class="fa-solid fa-droplet text-red-500 ml-1"></i> السبب والظهور:</strong>
+                        <p class="text-slate-600">جرح شريان أو وريد أثناء الحقن. الشريان بيعمل <span class="en-inline">Hematoma</span> بتكبر بسرعة جداً. نادر أوي تحصل في الـ <span class="en-inline">Palatal injection</span> لكثافة النسيج، لكنها شائعة جداً وأكبر ما يمكن في الـ <span class="en-inline">PSA Block</span> وممكن تحصل في الـ <span class="en-inline">IAN Block</span>.</p>
+                    </div>
+
+                    <div class="space-y-3">
+                        <div class="bg-red-50 border-r-4 border-red-500 p-3 rounded">
+                            <strong class="text-red-900 block font-bold mb-1"><i class="fa-solid fa-hand-press text-red-600 ml-1"></i> الإجراء الفوري (Immediate Action):</strong>
+                            <p class="text-slate-800">ضغط مباشر مركب على مكان النزيف باتجاه العظم لمدة <span class="font-bold text-red-700">لا تقل عن 60 ثانية</span>:</p>
+                            <ul class="list-disc list-inside text-slate-700 mt-1 space-y-1">
+                                <li><strong>IAN Block:</strong> الضغط على الـ <span class="en-inline">Medial aspect of mandibular ramus</span>.</li>
+                                <li><strong>Infraorbital Block:</strong> الضغط على الجلد مباشرة فوق الـ <span class="en-inline">Infraorbital foramen</span>.</li>
+                                <li><strong>Mental Block:</strong> الضغط فوق الـ <span class="en-inline">Mental foramen</span> (من الجلد أو الـ Mucosa).</li>
+                                <li><strong>PSA Block:</strong> أضخم هيتاتوما ومبتظهرش غير لما الخد يورم وينزل لأسفل؛ يطبق ضغط بالأصابع على الـ <span class="en-inline">Mucobuccal fold</span> لأقصى حد يستحمله المريض بدون Gagging + كمادات ثلج (<span class="en-inline">Cold applications</span>).</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-slate-100 p-3 rounded">
+                            <strong class="text-slate-900 block font-bold mb-1">المتابعة (Subsequent Management):</strong>
+                            <p class="text-slate-700">وقف أي علاج أسنان في المنطقة لحين اختفاء الأعراض. طمّن المريض وعرفه إن الجلد هيغير لونه (<span class="en-inline">Skin discoloration</span>) وممكن يحصل شويه <span class="en-inline">Trismus</span> وهيروحوا بالتدريج.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. Infection -->
+            <div class="card local bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden">
+                <div class="bg-slate-50 border-b border-slate-100 p-4 flex justify-between items-center">
+                    <h3 class="font-bold text-lg text-slate-800 flex items-center gap-2">
+                        <span class="bg-indigo-100 text-indigo-700 w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold">6</span>
+                        Infection (عدوى الأنسجة بعد الحقن)
+                    </h3>
+                    <span class="en-term">Local</span>
+                </div>
+                <div class="p-5 space-y-4 text-sm">
+                    <div>
+                        <strong class="text-indigo-900 block mb-1"><i class="fa-solid fa-bacteria text-emerald-600 ml-1"></i> الأسباب:</strong>
+                        <p class="text-slate-600">نقل بكتيريا السطح من الغشاء المخاطي للأنسجة العميقة بسن الإبرة، أو الحقن المباشر جوه منطقة مُصابة بالتهاب/عدوى (<span class="en-inline">Infected area</span>).</p>
+                    </div>
+
+                    <div class="bg-emerald-50 border-r-4 border-emerald-500 p-3 rounded">
+                        <strong class="text-emerald-900 block font-bold mb-1">الوقاية (Prevention):</strong>
+                        <p class="text-emerald-800">استخدم إبر استخدام مرة واحدة، غطي الإبرة فورا (<span class="en-inline">Recap</span>) طالما مش شغال بها، طهّر الـ Diaphragm بتاع الكاربولة بكحول، ونظف جفف مكان الشك وحط <span class="en-inline">Topical Antiseptic</span>.</p>
+                    </div>
+
+                    <div class="bg-slate-100 p-3 rounded">
+                        <strong class="text-slate-900 block font-bold mb-1">التصرف (Management):</strong>
+                        <p class="text-slate-700">الـ <span class="en-inline">Low grade infection</span> تشخيصها صعب وممكن تبدأ كـ Trismus. لو المريض ملقاش تحسن خلال 3 أيام من علاج الـ Trismus، ابدأ فورا <span class="en-inline">Penicillin</span> (أو بديل مناسب لو عنده حساسية) لمدة 7 أيام كاملة. لو مفيش استجابة حوله لـ <span class="en-inline">Maxillofacial Surgeon</span>.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 7. Edema -->
+            <div class="card local bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden">
+                <div class="bg-slate-50 border-b border-slate-100 p-4 flex justify-between items-center">
+                    <h3 class="font-bold text-lg text-slate-800 flex items-center gap-2">
+                        <span class="bg-indigo-100 text-indigo-700 w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold">7</span>
+                        Edema (التورم والانتفاخ)
+                    </h3>
+                    <span class="en-term">Local / Emergency</span>
+                </div>
+                <div class="p-5 space-y-4 text-sm">
+                    <div>
+                        <strong class="text-indigo-900 block mb-1"><i class="fa-solid fa-expand text-indigo-500 ml-1"></i> الأسباب الرئيسية:</strong>
+                        <ul class="list-disc list-inside text-slate-700 space-y-1 pr-2">
+                            <li><span class="en-inline">Trauma</span> أثناء الحقن، أو <span class="en-inline">Infection</span>، أو <span class="en-inline">Hemorrhage</span>.</li>
+                            <li>حقن بنج ملوث بمادة مطهرة.</li>
+                            <li><strong>Allergy / Angioedema:</strong> رد فعل تحسسي يسبب توسع الأوعية الدموية وتورم سريع جداً للنسيج.</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-red-50 border border-red-200 p-3 rounded-lg">
+                        <strong class="text-red-900 block font-bold mb-1 flex items-center gap-1">
+                            <i class="fa-solid fa-circle-exclamation text-red-600"></i> الخطر الأكبر (Airway Obstruction):
+                        </strong>
+                        <p class="text-red-800">تورم اللسان أو البلعوم أو الحنجرة (<span class="en-inline">Edema of tongue, pharynx, larynx</span>) بيقفل مجرى التنفس كلياً وهي حالة مهددة للحياة!</p>
+                    </div>
+
+                    <div class="bg-slate-50 p-3 rounded border border-slate-200">
+                        <strong class="text-slate-900 block font-bold mb-1">التعامل حسب السبب:</strong>
+                        <ul class="list-disc list-inside text-slate-700 space-y-1">
+                            <li><strong>Traumatic / Irritating solution:</strong> بسيط وبيروح خلال 1-3 أيام + مسكنات.</li>
+                            <li><strong>Hemorrhage edema:</strong> بيختفي خلال 7-14 يوم.</li>
+                            <li><strong>Infection edema:</strong> مش بيروح لوحده وبيزيد؛ لازم وصف <span class="en-inline">Antibiotics</span>.</li>
+                            <li><strong>Allergic Edema (بدون انغلاق مجرى التنفس):</strong> <span class="en-inline">Antihistamines</span> عضل أو بالفم وتحويل لأخصائي حساسية.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Emergency Steps -->
+                    <div class="bg-red-900 text-white p-4 rounded-xl space-y-2">
+                        <strong class="text-yellow-300 block font-bold text-base"><i class="fa-solid fa-kit-medical ml-1"></i> طوارئ: لو الإديما قفلت التنفس (Compromised Breathing):</strong>
+                        <ol class="list-decimal list-inside text-red-100 space-y-1 font-semibold">
+                            <li>حقن <span class="en-term">Epinephrine 0.3 mg IM or IV</span> فورا.</li>
+                            <li>إعطاء <span class="en-inline">Antihistamine IM/IV</span> و <span class="en-inline">Corticosteroids IM/IV</span>.</li>
+                            <li>نوم المريض في وضع مستقيم على ظهره (<span class="en-inline">Supine position</span>) لو فاقد الوعي + <span class="en-inline">CPR / BLS</span>.</li>
+                            <li>التجهيز لعملية فتح مجرى تنفس طارئ (<span class="en-term">Cricothyrotomy</span>) لو حصل انسداد كامل.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 8. Sloughing of Tissues -->
+            <div class="card local bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden">
+                <div class="bg-slate-50 border-b border-slate-100 p-4 flex justify-between items-center">
+                    <h3 class="font-bold text-lg text-slate-800 flex items-center gap-2">
+                        <span class="bg-indigo-100 text-indigo-700 w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold">8</span>
+                        Sloughing of Tissues (انسلاخ الأنسجة)
+                    </h3>
+                    <span class="en-term">Local</span>
+                </div>
+                <div class="p-5 space-y-4 text-sm">
+                    <div>
+                        <strong class="text-indigo-900 block mb-1"><i class="fa-solid fa-layer-group text-amber-500 ml-1"></i> الأسباب والتظاهر:</strong>
+                        <p class="text-slate-600">نقص التروية الدموية لفترة طويلة (<span class="en-inline">Prolonged ischemia</span>) بسبب استخدام قابض للأوعية الدموية بتركيز عالٍ (<span class="en-inline">High concentration vasoconstrictor</span>). ده بيؤدي لـ <span class="en-inline">Epithelial desquamation</span> أو <span class="en-inline">Sterile abscess</span>.</p>
+                        <p class="text-amber-800 bg-amber-50 p-2 rounded mt-2 font-semibold">تنويه هام: المكان الوحيد اللي تقريباً بيحصل فيه المشكلة دي هو أنسجة سقف الحلق (<span class="en-inline">Palatal tissues</span>).</p>
+                    </div>
+
+                    <div class="bg-slate-100 p-3 rounded">
+                        <strong class="text-slate-900 block font-bold mb-1">العلاج:</strong>
+                        <p class="text-slate-700">علاج أعراضي (<span class="en-inline">Symptomatic management</span>) ومسكنات لحين التئام الأنسجة.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 9. Lip-Chewing / Self-Inflicted Injury -->
+            <div class="card local bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden">
+                <div class="bg-slate-50 border-b border-slate-100 p-4 flex justify-between items-center">
+                    <h3 class="font-bold text-lg text-slate-800 flex items-center gap-2">
+                        <span class="bg-indigo-100 text-indigo-700 w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold">9</span>
+                        Self-Inflicted Injury (عض الشفة واللسان)
+                    </h3>
+                    <span class="en-term">Local</span>
+                </div>
+                <div class="p-5 space-y-4 text-sm">
+                    <div>
+                        <strong class="text-indigo-900 block mb-1"><i class="fa-solid fa-child text-indigo-500 ml-1"></i> السيناريو الشائع:</strong>
+                        <p class="text-slate-600">طفل أو مريض ذوي احتياجات خاصة يخرج من العيادة وهو منمل، يفضل يعض شفته أو لسانه بدون ما يحس، يرجع تاني يوم بشفته وارمة ومقروحة جداً!</p>
+                        <p class="text-slate-700 font-semibold mt-1">السبب: استخدام بنج طويل المفعول (<span class="en-inline">Long-acting LA</span>) في شغل بسيط مش محتاج الوقت ده كوله.</p>
+                    </div>
+
+                    <div class="bg-indigo-50 border-r-4 border-indigo-500 p-3 rounded space-y-2">
+                        <strong class="text-indigo-900 block font-bold">الوقاية والتعليمات (Prevention):</strong>
+                        <ul class="list-disc list-inside text-slate-700 space-y-1">
+                            <li>اختر نوع بنج يناسب مدة الشغل بالضبط.</li>
+                            <li>حط قطعة قطن (<span class="en-inline">Cotton roll</span>) بين الشفايف قبل ما المريض يروح لو لسه منمل.</li>
+                            <li>حذّر المريض وأهله مشدداً: ممنوع الأكل، ممنوع شرب سوائل سخنة، وممنوع يقعد يعض شفته أو لسانه ليختبر البنج.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 10. Facial Nerve Paralysis -->
+            <div class="card local bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden">
+                <div class="bg-slate-50 border-b border-slate-100 p-4 flex justify-between items-center">
+                    <h3 class="font-bold text-lg text-slate-800 flex items-center gap-2">
+                        <span class="bg-indigo-100 text-indigo-700 w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold">10</span>
+                        Facial Nerve Paralysis (شلل العصب الوجهي السابع)
+                    </h3>
+                    <span class="en-term">Local</span>
+                </div>
+                <div class="p-5 space-y-4 text-sm">
+                    <div>
+                        <strong class="text-indigo-900 block mb-1"><i class="fa-solid fa-face-flushed text-indigo-500 ml-1"></i> السبب العيادي:</strong>
+                        <p class="text-slate-600">حقن البنج بالخطأ جوه كبسولة الغدة النكفية (<span class="en-inline">Parotid gland capsule</span>) أثناء عمل <span class="en-inline">Inferior Alveolar Nerve Block</span> لما الإبرة تروح للخلف زيادة (<span class="en-inline">Posterior direction</span>). العصب السابع (<span class="en-inline">7th Cranial Nerve</span>) بيمر جواها فتنشل عضلات التعبير الوجهية مؤقتاً.</p>
+                    </div>
+
+                    <div class="bg-amber-50 border-r-4 border-amber-500 p-3 rounded space-y-2">
+                        <strong class="text-amber-900 block font-bold"><i class="fa-solid fa-eye text-amber-600 ml-1"></i> الأعراض والتصرف الدقيق:</strong>
+                        <p class="text-slate-700"><strong>المشكلة التجميلية:</strong> ارتخاء جانب الوجه وعدم القدرة على التبسم. بتستمر من ساعة لعد ساعات وحسب البنج وما بتحتاجش أي علاج غير الانتظار.</p>
+                        <p class="text-red-700 font-bold">المشكلة الأخطر (عدم إغلاق العين):</p>
+                        <p class="text-slate-700">المريض مش قادر يقفل عينه ولا يرمش (<span class="en-inline">Inability to wink/blink</span>).</p>
+                        <ul class="list-disc list-inside text-slate-800 space-y-1">
+                            <li>اطلب من المريض يقفل جفن عينه بإيده يدوياً كل شوية عشان القرنية ما تجفش (<span class="en-inline">Keep cornea lubricated</span>).</li>
+                            <li>لو لابِس عدسات لاصقة (<span class="en-inline">Contact lenses</span>)زم يتشالوا فوراً لحد ما حركة العضلات ترجع.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 11. Needle Breakage -->
+            <div class="card local bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden">
+                <div class="bg-slate-50 border-b border-slate-100 p-4 flex justify-between items-center">
+                    <h3 class="font-bold text-lg text-slate-800 flex items-center gap-2">
+                        <span class="bg-indigo-100 text-indigo-700 w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold">11</span>
+                        Needle Breakage (انكسار الإبرة)
+                    </h3>
+                    <span class="en-term">Local / Emergency</span>
+                </div>
+                <div class="p-5 space-y-4 text-sm">
+                    <div>
+                        <strong class="text-indigo-900 block mb-1"><i class="fa-solid fa-syringe text-red-500 ml-1"></i> الأسباب:</strong>
+                        <ul class="list-disc list-inside text-slate-700 space-y-1 pr-2">
+                            <li>حركة فجائية مفاجئة من المريض أثناء دخول الإبرة.</li>
+                            <li>استخدام إبرة رفيعة جداً (<span class="en-inline">Smaller gauge</span>).</li>
+                            <li>ثني الإبرة مسبقاً (<span class="en-inline">Previously bent needle</span>).</li>
+                            <li>إدخال الإبرة لحد الـ <span class="en-inline">Hub</span> (دي أضعف منطقة في الإبرة).</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-emerald-50 border-r-4 border-emerald-500 p-3 rounded">
+                        <strong class="text-emerald-900 block font-bold mb-1">الوقاية (Prevention):</strong>
+                        <p class="text-emerald-800">استخدم إبرة مقاس <span class="en-term">25-gauge</span> وطويلة للـ Block. أوعى تدخل الإبرة للـ Hub. أوعى تغير اتجاه الإبرة وهي غاطسة جوه النسيج (<span class="en-inline">Don't redirect inside tissue</span>).</p>
+                    </div>
+
+                    <!-- Action Plan -->
+                    <div class="bg-red-50 border-r-4 border-red-500 p-3 rounded space-y-2">
+                        <strong class="text-red-900 block font-bold"><i class="fa-solid fa-hand-holding-medical text-red-600 ml-1"></i> خطة التعامل الفوري عند الانكسار:</strong>
+                        <ol class="list-decimal list-inside text-slate-800 space-y-1">
+                            <li>خليك هادي تماماً وما تفزعش.</li>
+                            <li>ثبت فم المريض وما تشيلش إيدك واطلب منه ما يتحركش وافتح فمه برتاحة (<span class="en-inline">Bite block</span>).</li>
+                            <li><strong>لو جزء من الإبرة بارز:</strong> امسكه فورا بـ <span class="en-inline">Cotton pliers</span> أو <span class="en-inline">Hemostat</span> واسحبه.</li>
+                            <li><strong>لو الإبرة اختفت تماماً جوه النسيج:</strong> <span class="font-bold text-red-700">ماتعملش أي فتح جراحي أو تشريح!</span> ترك الإبرة لتتغلف بـ <span class="en-inline">Scar tissue</span> أفضل بكتير من الجراحة العنيفة. طمن المريض وفهمه إن مقولة "الإبرة بتمشي مع الدم" دي شائعة غير صحيحة، وسجل الواقعة وحوله لـ <span class="en-inline">Oral Surgeon</span>.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 12. Post Anesthetic Intraoral Lesions -->
+            <div class="card local bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden">
+                <div class="bg-slate-50 border-b border-slate-100 p-4 flex justify-between items-center">
+                    <h3 class="font-bold text-lg text-slate-800 flex items-center gap-2">
+                        <span class="bg-indigo-100 text-indigo-700 w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold">12</span>
+                        Post-Anesthetic Intraoral Lesions (قرح الفم بعد البنج)
+                    </h3>
+                    <span class="en-term">Local</span>
+                </div>
+                <div class="p-5 space-y-4 text-sm">
+                    <div>
+                        <strong class="text-indigo-900 block mb-1"><i class="fa-solid fa-disease text-indigo-500 ml-1"></i> السيناريو والأنواع:</strong>
+                        <p class="text-slate-600 mb-2">المريض يشتكي من قرح مؤلمة ظهرت بعد 2 يوم من الحقن. الصدمة الخفيفة من الإبرة بتعمل إعادة تنشيط للمرض المخفي (<span class="en-inline">Reactivate latent disease</span>):</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                            <div class="bg-slate-100 p-2 rounded">
+                                <strong class="text-indigo-900 block">Aphthous Stomatitis:</strong>
+                                بتظهر في الـ <span class="en-inline">Movable gingiva</span> (زي الـ Buccal vestibule). ليست عدوى فيروسية بل خلل مناعي أو بكتيري.
+                            </div>
+                            <div class="bg-slate-100 p-2 rounded">
+                                <strong class="text-indigo-900 block">Herpes Simplex:</strong>
+                                فيروسي بيظهر غالباً خارج الفم أو داخل الفم على الـ <span class="en-inline">Fixed tissue / Attached gingiva</span>.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-100 p-3 rounded">
+                        <strong class="text-slate-900 block font-bold mb-1">العلاج:</strong>
+                        <p class="text-slate-700">علاج أعراضي لتخفيف الألم وتغطية القرحة (<span class="en-inline">Symptomatic & topical pain relief</span>).</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- SYSTEMIC COMPLICATIONS -->
+
+            <!-- 13. Syncope -->
+            <div class="card systemic bg-white rounded-2xl border border-red-200 shadow-sm hover:shadow-md transition overflow-hidden">
+                <div class="bg-red-50 border-b border-red-100 p-4 flex justify-between items-center">
+                    <h3 class="font-bold text-lg text-red-900 flex items-center gap-2">
+                        <span class="bg-red-600 text-white w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold">13</span>
+                        Syncope / Fainting (الإغماء والنقص المفاجئ لتروية الدماغ)
+                    </h3>
+                    <span class="en-term text-red-700 bg-red-100 border-red-300">Systemic</span>
+                </div>
+                <div class="p-5 space-y-4 text-sm">
+                    <div>
+                        <strong class="text-red-900 block mb-1"><i class="fa-solid fa-user-slash text-red-500 ml-1"></i> التعريف والأعراض:</strong>
+                        <p class="text-slate-600">أكثر مشكلة نظامية شائعة! بتحصل بسبب <span class="en-inline">Temporary acute cerebral ischemia</span> نتيجة الخوف والتوتر عند شك الإبرة، فتتوسع أوعية الأحشاء (<span class="en-inline">Splanchnic vasodilation</span>) ويقل الـ Cardiac output.</p>
+                        <p class="font-bold text-slate-800 mt-2">علامات الإغماء المباشرة:</p>
+                        <div class="flex flex-wrap gap-2 mt-1">
+                            <span class="bg-slate-100 px-2 py-1 rounded text-xs font-bold">1. Pallor (شحوب)</span>
+                            <span class="bg-slate-100 px-2 py-1 rounded text-xs font-bold">2. Cold sweat (عرق بارد)</span>
+                            <span class="bg-slate-100 px-2 py-1 rounded text-xs font-bold">3. Dizziness (دوخة)</span>
+                            <span class="bg-slate-100 px-2 py-1 rounded text-xs font-bold">4. Nausea (غثيان)</span>
+                            <span class="bg-slate-100 px-2 py-1 rounded text-xs font-bold">5. Loss of consciousness (فقدان وعي)</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-red-50 border-r-4 border-red-600 p-4 rounded-lg space-y-2">
+                        <strong class="text-red-900 block font-bold text-base"><i class="fa-solid fa-bolt text-red-600 ml-1"></i> خطوات الإسعاف السريع (Management):</strong>
+                        <ol class="list-decimal list-inside text-slate-800 space-y-1 font-semibold">
+                            <li>وقف شغل الأسنان فوراً.</li>
+                            <li>نزل كرسي الأسنان لوضع المستلقي مع رفع الرجلين قليلاً (<span class="en-term">Supine position with legs elevated</span>) لزيادة الدم المتردد للمخ.</li>
+                            <li>أو اطلب من المريض يوطي ركبتيه ويحط راسه بين ركبتيه مع الضغط لزيادة ضغط الأوعية.</li>
+                            <li>طمن المريض واستخدم نشادر (<span class="en-inline">Aromatic spirit of ammonia</span>) تحت الأنف لعدة أنفاس.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 14. Toxicity -->
+            <div class="card systemic bg-white rounded-2xl border border-red-200 shadow-sm hover:shadow-md transition overflow-hidden">
+                <div class="bg-red-50 border-b border-red-100 p-4 flex justify-between items-center">
+                    <h3 class="font-bold text-lg text-red-900 flex items-center gap-2">
+                        <span class="bg-red-600 text-white w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold">14</span>
+                        Toxicity (التسمم بسبب الجرعة الزائدة - Overdose)
+                    </h3>
+                    <span class="en-term text-red-700 bg-red-100 border-red-300">Systemic</span>
+                </div>
+                <div class="p-5 space-y-4 text-sm">
+                    <div>
+                        <strong class="text-red-900 block mb-1"><i class="fa-solid fa-skull-crossbones text-red-600 ml-1"></i> الأسباب (Etiology):</strong>
+                        <p class="text-slate-600">جرعة زائدة، حقن بالخطأ جوه الوعاء الدموي مباشرة (<span class="en-inline">Intravenous injection</span>)، بطء التخلص من الدواء بسبب أمراض الكبد أو الكلى، أو الحقن في منطقة مليانة أوعية بدون قابض أوعية.</p>
+                    </div>
+
+                    <div class="bg-amber-50 p-3 rounded border border-amber-200">
+                        <strong class="text-amber-900 block font-bold mb-1">المظهر السريري (Clinical Picture):</strong>
+                        <ul class="list-disc list-inside text-slate-700 space-y-1">
+                            <li><strong>CNS Stimulation stage:</strong> إثارة، هزيان، تشنجات (<span class="en-inline">Convulsions</span>)، زيادة نبض وتنفس.</li>
+                            <li><strong>CNS Depression stage:</strong> هبوط ضغط، تظبيط التنفس، فقدان وعي، ووفاة لا قدر الله بسبب <span class="en-inline">Hypoxia</span> وتوقف القلب.</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-emerald-50 border-r-4 border-emerald-500 p-3 rounded">
+                        <strong class="text-emerald-900 block font-bold mb-1">الوقاية (Prevention):</strong>
+                        <p class="text-emerald-800">قيم المريض قبل الشغل، استخدم أقل تركيز وأقل كمية ممكنة، استخدم Vasoconstrictor، <strong>واشفط دايماً قبل الحقن (<span class="en-term">Aspirate before injection</span>)</strong> واحقن ببطء.</p>
+                    </div>
+
+                    <div class="bg-red-900 text-white p-3 rounded-lg">
+                        <strong class="text-yellow-300 block font-bold mb-1">العلاج الطارئ (Treatment):</strong>
+                        <ul class="list-disc list-inside text-red-100 space-y-1">
+                            <li>السيطرة على التشنجات بـ <span class="en-inline">Diazepam 5 mg</span> أو <span class="en-inline">Midazolam 2 mg</span>.</li>
+                            <li>أكسجين وتنفس صناعي (<span class="en-inline">Rescue breathing</span>) عند هبوط التنفس.</li>
+                            <li>محاليل وريدية ورافعات ضغط (<span class="en-inline">IV fluids & Vasopressors</span>) وإجراء <span class="en-inline">CPR</span> لو حصل سكتة قلبية.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 15. Allergy and Anaphylactic Reaction -->
+            <div class="card systemic emergency bg-white rounded-2xl border border-red-300 shadow-sm hover:shadow-md transition overflow-hidden">
+                <div class="bg-red-600 text-white p-4 flex justify-between items-center">
+                    <h3 class="font-bold text-lg flex items-center gap-2">
+                        <span class="bg-white text-red-600 w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold">15</span>
+                        Allergy & Anaphylaxis (الحساسية والصدمة التحسسية الحادة)
+                    </h3>
+                    <span class="bg-red-800 text-white text-xs px-2 py-1 rounded font-bold border border-red-400">EMERGENCY</span>
+                </div>
+                <div class="p-5 space-y-4 text-sm">
+                    <div>
+                        <strong class="text-red-900 block mb-1"><i class="fa-solid fa-triangle-exclamation text-red-600 ml-1"></i> الأعراض والتفريق:</strong>
+                        <p class="text-slate-600 mb-1"><strong>الحساسية العادية (Allergy):</strong> طفح جلدي (<span class="en-inline">Rashes</span>)، حكة (<span class="en-inline">Urticaria</span>)، سخونية، وزم تورمي (<span class="en-inline">Angioneurotic edema</span>)، أو أزمة ربوية.</p>
+                        <p class="text-red-700 font-bold">الصدمة التحسسية (<span class="en-term">Anaphylactic Shock</span>):</p>
+                        <p class="text-slate-700">تفاعل مفاجئ وعنيف يفقد الأوعية نغمتها وممكن يؤدي للموت فجأة. أعراضه: هبوط حاد بالضغط + نبض سريع ضعيف + هبوط تنفسي + غيبوبة.</p>
+                    </div>
+
+                    <div class="bg-red-100 border-2 border-red-500 p-4 rounded-xl space-y-2">
+                        <strong class="text-red-900 block font-bold text-base"><i class="fa-solid fa-kit-medical text-red-700 ml-1"></i> بروتوكول الإنقاذ الفوري (Emergency Management):</strong>
+                        <ol class="list-decimal list-inside text-slate-900 space-y-1 font-extrabold">
+                            <li>نوم المريض في وضع الشوك (<span class="en-term">Shock position</span>) وافتح مجرى التنفس فوراً.</li>
+                            <li>ركب أكسجين وافتح وريد (<span class="en-term">Establish IV line</span>).</li>
+                            <li>احقن الثلاثي الفوري: <span class="en-term">Adrenaline + Corticosteroid + Antihistaminic</span>.</li>
+                            <li>تابع العلامات الحيوية وبادر بعمل <span class="en-term">CPR</span> لو لزم الأمر.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 16. Idiosyncrasy -->
+            <div class="card systemic bg-white rounded-2xl border border-red-200 shadow-sm hover:shadow-md transition overflow-hidden">
+                <div class="bg-red-50 border-b border-red-100 p-4 flex justify-between items-center">
+                    <h3 class="font-bold text-lg text-red-900 flex items-center gap-2">
+                        <span class="bg-red-600 text-white w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold">16</span>
+                        Idiosyncrasy (استجابة غريبة غير حساسية وغير تسممية)
+                    </h3>
+                    <span class="en-term text-red-700 bg-red-100 border-red-300">Systemic</span>
+                </div>
+                <div class="p-5 space-y-4 text-sm">
+                    <div>
+                        <strong class="text-red-900 block mb-1"><i class="fa-solid fa-dna text-indigo-500 ml-1"></i> التعريف:</strong>
+                        <p class="text-slate-600">تفاعل غير طبيعي وغريب من جسم المريض لجرعة صغيرة جداً وآمنة من الدواء مفروض ما تسببش أي أثر سلبي للمريض العادي. وهي حالة <span class="en-inline">Non-toxic & Non-allergic</span>.</p>
+                        <p class="font-bold text-slate-800 mt-2">الأعراض السريرية:</p>
+                        <p class="text-slate-700">شحوب (<span class="en-inline">Pallor</span>)، تسارع ضربات القلب (<span class="en-inline">Tachycardia</span>)، هبوط الضغط (<span class="en-inline">Hypotension</span>)، انخفاض ضربات القلب، وانهيار (<span class="en-inline">Collapse</span>).</p>
+                    </div>
+
+                    <div class="bg-amber-50 p-3 rounded border border-amber-200">
+                        <strong class="text-amber-900 block font-bold mb-1">الوقاية والعلاج:</strong>
+                        <p class="text-slate-700">تجنب أي دواء يذكر المريض أن له تاريخ مع تفاعلات غريبة معه. احقن ببطء وراقب المريض. العلاج يماثل مرحلة الـ <span class="en-inline">Depression stage of toxic overdose</span>. (ملحوظة: المنومات <span class="en-inline">Barbiturates</span> غير فعالة في علاج هذه الحالة).</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Quick Summary Table -->
+        <section class="mt-12 bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+            <h3 class="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+                <i class="fa-solid fa-table-list text-indigo-600"></i>
+                جدول الملخص السريع لطوارئ العيادة (Chairside Quick Reference)
+            </h3>
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm text-right text-slate-700 border-collapse">
+                    <thead class="bg-slate-100 text-slate-900 font-bold">
+                        <tr>
+                            <th class="p-3 border">المشكلة (Complication)</th>
+                            <th class="p-3 border">العرض الرئيسي (Main Symptom)</th>
+                            <th class="p-3 border">التصرف الفوري في الكرسي (Immediate Chairside Action)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-200">
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-3 border font-bold text-indigo-900">Syncope (إغماء)</td>
+                            <td class="p-3 border">شحوب، عرق بارد، غثيان، فقدان وعي</td>
+                            <td class="p-3 border">وضع <span class="en-inline">Supine position</span> + نشادر + رفع الرجلين.</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-3 border font-bold text-indigo-900">Hematoma</td>
+                            <td class="p-3 border">ورم وتجمع دموي سريع بعد PSA أو IAN</td>
+                            <td class="p-3 border">ضغط مباشر ضد العظم لمدة 60 ثانية + ثلج.</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-3 border font-bold text-indigo-900">Broken Needle</td>
+                            <td class="p-3 border">انكسار سن الإبرة جوه النسيج</td>
+                            <td class="p-3 border">لو بارزة اسحبها بـ Hemostat. لو غاطسة ما تفتحش جراحياً وحول فوراً.</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-3 border font-bold text-indigo-900">Facial Paralysis</td>
+                            <td class="p-3 border">ارتخاء الوجه وعدم القدرة على قفل العين</td>
+                            <td class="p-3 border">إغلاق الجفن يدوياً لحماية القرنية ونزع العدسات.</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-3 border font-bold text-indigo-900">Trismus</td>
+                            <td class="p-3 border">صعوبة فتح الفم بعد الحقن بيوم</td>
+                            <td class="p-3 border">كمادات دافية + مسكن + Diazepam + تمارين فتح الفم.</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-3 border font-bold text-red-700">Anaphylactic Shock</td>
+                            <td class="p-3 border">هبوط حاد بالضغط وضيق تنفس وفقدان وعي</td>
+                            <td class="p-3 border">Adrenaline IM + Corticosteroid + Antihistamines + أكسجين.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-12 bg-slate-900 text-slate-400 py-6 text-center text-xs">
+        <p>تم إعداد هذا المرجع للتذكرة السريعة قبل دخول العيادة | قسم جراحة الفم والتخدير النصفي</p>
+    </footer>
+
+    <!-- Interactive JS -->
+    <script>
+        function filterCategory(cat) {
+            // Update active button styling
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-indigo-600', 'text-white');
+                btn.classList.add('bg-white', 'text-slate-700');
+            });
+
+            const activeBtn = document.getElementById(`btn-${cat}`);
+            if(activeBtn) {
+                activeBtn.classList.add('bg-indigo-600', 'text-white');
+                activeBtn.classList.remove('bg-white', 'text-slate-700');
+            }
+
+            // Filter cards
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                if (cat === 'all') {
+                    card.style.display = 'block';
+                } else if (cat === 'local') {
+                    card.style.display = card.classList.contains('local') ? 'block' : 'none';
+                } else if (cat === 'systemic') {
+                    card.style.display = card.classList.contains('systemic') ? 'block' : 'none';
+                } else if (cat === 'emergency') {
+                    card.style.display = card.classList.contains('emergency') ? 'block' : 'none';
+                }
+            });
+        }
+
+        function filterCards() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const cards = document.querySelectorAll('.card');
+
+            cards.forEach(card => {
+                const text = card.innerText.toLowerCase();
+                if (text.includes(input)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

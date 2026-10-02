@@ -1,0 +1,30 @@
+{
+  "id": "oral-surgery",
+  "name": "Oral Surgery",
+  "description": "Test version for Oral Surgery",
+
+  "chapters": [
+    {
+      "id": "ch1",
+      "name": "Extraction",
+      "quiz": "data/oral-surgery/ch1-quiz.json",
+      "pdf": "data/oral-surgery/ch1-notes.pdf",
+      "questions": 20
+    },
+    {
+      "id": "ch2",
+      "name": "Impacted Teeth",
+      "quiz": "data/oral-surgery/ch2-quiz.json",
+      "pdf": "data/oral-surgery/ch2-notes.pdf",
+      "questions": 20
+    },
+    {
+      "id": "ch3",
+      "name": "Complications of Local Anesthesia",
+      "quiz": "data/oral-surgery/ch3-quiz.json",
+      "pdf": "data/oral-surgery/Complication of Local Anesthesia.pdf",
+      "guide": "data/oral-surgery/guides/clinical_la_complications_guide.html",
+      "questions": 20
+    }
+  ]
+}
